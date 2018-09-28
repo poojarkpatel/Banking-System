@@ -1,8 +1,8 @@
-
+from Account import Account
 class BankingSystem:
 
 	def __init__(self):
-		pass
+		self.__accountsDict = {}
 
 
 
@@ -22,9 +22,12 @@ class BankingSystem:
 
 	def __performOPerations(self,choice):
 		if choice is 1:
-			name,address,date,month,year,branchName,gender = self.__getUserDetails()
-			print(gender)
-			print("this is add account block")
+			name,address,date,month,year,branchName,gender,accountType = self.__getUserDetails()
+			bankAccount = Account(name,address,date,month,year,branchName,gender,accountType)
+			self.__accountsDict[bankAccount.] = bankAccount
+
+
+			
 		elif choice is 2:
 			print("this is view account block")
 		elif choice is 3:
@@ -46,13 +49,13 @@ class BankingSystem:
 		date = int(input("Enter date :- "))
 		month = int(input("Enter month :- "))
 		year = int(input("Enter year :- "))
-		ifsc = input("1.Motera 2.Science City 3.Sahibaug \n Choose your Branch :-")
+		ifsc = input("1.Motera 2.Science City 3.Shahibaug \n Choose your Branch :-")
 		if ifsc =='1':
 			branchName = 'Motera'
 		if ifsc =='2':
-			branchName = 'Science City'
+			branchName = 'ScienceCity'
 		if ifsc =='3':
-			branchName = 'sahibaug'
+			branchName = 'Shahibaug'
 
 		gender = input("1.Male 2.Female \n Choose your Gender :-")
 		if gender =='1':
@@ -60,7 +63,14 @@ class BankingSystem:
 		if gender =='2':
 			gender = 'Female'
 
-		return name,address,date,month,year,branchName,gender
+
+		accountType = input("1.Current 2.Savings \n Choose your Account Type :- ")
+			if accountType is "1":
+				accountType = "Current" 
+			elif accountType is "2":
+				accountType = "Savings"
+
+		return name,address,date,month,year,branchName,gender,accountType
 
 
 

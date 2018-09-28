@@ -24,7 +24,8 @@ class BankingSystem:
 		if choice is 1:
 			name,address,date,month,year,branchName,gender,accountType = self.__getUserDetails()
 			bankAccount = Account(name,address,date,month,year,branchName,gender,accountType)
-			self.__accountsDict[bankAccount.] = bankAccount
+			self.__accountsDict[bankAccount.getAccountNumber()] = bankAccount
+			print("Account created")
 
 
 			
@@ -65,10 +66,10 @@ class BankingSystem:
 
 
 		accountType = input("1.Current 2.Savings \n Choose your Account Type :- ")
-			if accountType is "1":
-				accountType = "Current" 
-			elif accountType is "2":
-				accountType = "Savings"
+		if accountType is "1":
+			accountType = "Current" 
+		elif accountType is "2":
+			accountType = "Savings"
 
 		return name,address,date,month,year,branchName,gender,accountType
 

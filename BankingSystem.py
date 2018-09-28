@@ -25,12 +25,13 @@ class BankingSystem:
 			name,address,date,month,year,branchName,gender,accountType = self.__getUserDetails()
 			bankAccount = Account(name,address,date,month,year,branchName,gender,accountType)
 			self.__accountsDict[bankAccount.getAccountNumber()] = bankAccount
-			print("Account created")
-
-
+			#print("Account created")
+			bankAccount.viewAccount()
 			
 		elif choice is 2:
-			print("this is view account block")
+			self.accountNumber = int(input("Enter your account number :- "))
+			bankAccount = self.__accountsDict[self.accountNumber]
+			bankAccount.viewAccount()
 		elif choice is 3:
 			print("credit block")
 		elif choice is 4:

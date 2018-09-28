@@ -16,3 +16,17 @@ class Account:
 
 	def getAccountNumber(self):
 		return self.__accountNumber
+
+	def viewAccount(self):
+		print(f"Account Number :- {self.__accountNumber}")
+		print(f"IFSC :- {self.__ifsc}")
+		print(f"Branch Name:- {self.__branchName}")
+		print(f"Name :- {self._name}")
+		print(f"Gender :- {self._gender}")
+		print(f"Address:- {self._address}")
+		print(f"Date :- {self._date}")
+		print(f"Month :- {self._month}")
+		print(f"Year :- {self._year}")
+		print(f"Balance :- {self.__balance}")
+
+		exit = input("Press enter to exit :- ")

@@ -18,6 +18,7 @@ class Account:
 		return self.__accountNumber
 
 	def viewAccount(self):
+		print("\n\n\nYour Account Details: ")
 		print(f"Account Number :- {self.__accountNumber}")
 		print(f"IFSC :- {self.__ifsc}")
 		print(f"Branch Name:- {self.__branchName}")
@@ -28,5 +29,20 @@ class Account:
 		print(f"Month :- {self._month}")
 		print(f"Year :- {self._year}")
 		print(f"Balance :- {self.__balance}")
+		exit = input("Press enter to exit :- ")
 
+	def getMyIfsc(self):
+		return self.__ifsc
+
+
+	def credit(self):
+		amount = int(input("Enter the amount to be credited :- "))
+		self.__balance += amount
+		print(f"Your balance is :- {self.__balance}")
+		exit = input("Press enter to exit :- ")
+
+	def debit(self):
+		amount = int(input("Enter the amount to be debited :- "))
+		self.__balance -= amount
+		print(f"Your balance is :- {self.__balance}")
 		exit = input("Press enter to exit :- ")

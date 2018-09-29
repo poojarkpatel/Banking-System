@@ -25,7 +25,6 @@ class BankingSystem:
 			name,address,date,month,year,branchName,gender,accountType = self.__getUserDetails()
 			bankAccount = Account(name,address,date,month,year,branchName,gender,accountType)
 			self.__accountsDict[bankAccount.getAccountNumber()] = bankAccount
-			#print("Account created")
 			bankAccount.viewAccount()
 			
 		elif choice is 2:
@@ -33,9 +32,19 @@ class BankingSystem:
 			bankAccount = self.__accountsDict[self.accountNumber]
 			bankAccount.viewAccount()
 		elif choice is 3:
-			print("credit block")
+			self.accountNumber = int(input("Enter your account Number :- "))
+			bankAccount = self.__accountsDict[self.accountNumber]
+			ifsc = input("Enter your ifsc code :- ")
+			if bankAccount.getMyIfsc() == ifsc:
+				bankAccount.credit()
+
 		elif choice is 4:
-			print("debit block")
+			self.accountNumber = int(input("Enter your account Number :- "))
+			bankAccount = self.__accountsDict[self.accountNumber]
+			ifsc = input("Enter your ifsc code :- ")
+			if bankAccount.getMyIfsc() == ifsc:
+				bankAccount.debit()
+			
 		elif choice is 5:
 			print("TRANSACTION")
 		elif choice is 6:
@@ -51,7 +60,7 @@ class BankingSystem:
 		date = int(input("Enter date :- "))
 		month = int(input("Enter month :- "))
 		year = int(input("Enter year :- "))
-		ifsc = input("1.Motera 2.Science City 3.Shahibaug \n Choose your Branch :-")
+		ifsc = input("1.Motera 2.Science City 3.Shahibaug \n Choose your Branch :- ")
 		if ifsc =='1':
 			branchName = 'Motera'
 		if ifsc =='2':
@@ -59,7 +68,7 @@ class BankingSystem:
 		if ifsc =='3':
 			branchName = 'Shahibaug'
 
-		gender = input("1.Male 2.Female \n Choose your Gender :-")
+		gender = input("1.Male 2.Female \n Choose your Gender :- ")
 		if gender =='1':
 			gender = 'Male'
 		if gender =='2':

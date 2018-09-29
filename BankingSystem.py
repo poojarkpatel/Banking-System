@@ -46,21 +46,33 @@ class BankingSystem:
 				bankAccount.debit()
 			
 		elif choice is 5:
-			self.senderAccountNumber = int(input("Enter your account Number :- "))
-			senderBankAccount = self.__accountsDict[self.accountNumber]
+			self.senderAccountNumber = int(input("Enter sender's account Number :- "))
+			senderBankAccount = self.__accountsDict[self.senderAccountNumber]
 			self.senderIfsc =  input("Enter sender's ifsc code :- ")
 			amount = int(input("Enter the amount to be transferred :-"))
-			self.receiverAccountNumber = int(input("Enter your account Number :- "))
-			receiverBankAccount = self.__accountsDict[self.accountNumber]
+			self.receiverAccountNumber = int(input("Enter beneficiary's account Number :- "))
+			receiverBankAccount = self.__accountsDict[self.receiverAccountNumber]
 			self.receiverIfsc =  input("Enter sender's ifsc code :- ")
 			if senderBankAccount.getMyIfsc() == senderIfsc:
 				transaction(amount,'debit')
-			if receiverBankAccount.getMyIfsc() ==receiverIfsc:
+			if receiverBankAccount.getMyIfsc() == receiverIfsc:
 				transaction(amount,'credit')
-			print("Transaction successful")
+			print("Transaction successfull")
 
 		elif choice is 6:
-			print("delete account")
+			name = input("Enter your name :-")
+			date = int(input("Enter date :-"))
+			month = int(input("Enter month :-"))
+			year = int(input("Enter year :-"))
+			ifsc = input("Enter ifsc :-")
+			self.accountNumber = int(input("Enter your account number :- "))
+			bankAccount = self.__accountsDict[self.accountNumber]
+			valid = bankAccount.deleteAccount(name,date,month,year,self.accountNumber,ifsc)
+			if valid:
+				self.__accountsDict.pop(self.accountNumber)
+				del bankAccount
+				print("Account deleted.")
+
 		elif choice is 7:
 			raise SystemExit
 		else:

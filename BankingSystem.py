@@ -46,7 +46,19 @@ class BankingSystem:
 				bankAccount.debit()
 			
 		elif choice is 5:
-			print("TRANSACTION")
+			self.senderAccountNumber = int(input("Enter your account Number :- "))
+			senderBankAccount = self.__accountsDict[self.accountNumber]
+			self.senderIfsc =  input("Enter sender's ifsc code :- ")
+			amount = int(input("Enter the amount to be transferred :-"))
+			self.receiverAccountNumber = int(input("Enter your account Number :- "))
+			receiverBankAccount = self.__accountsDict[self.accountNumber]
+			self.receiverIfsc =  input("Enter sender's ifsc code :- ")
+			if senderBankAccount.getMyIfsc() == senderIfsc:
+				transaction(amount,'debit')
+			if receiverBankAccount.getMyIfsc() ==receiverIfsc:
+				transaction(amount,'credit')
+			print("Transaction successful")
+
 		elif choice is 6:
 			print("delete account")
 		elif choice is 7:

@@ -8,6 +8,7 @@ class Account:
 		self.__ifsc = self.__getIfsc(self.__branchName)
 		self.__accountNumber = randint(10000000,99999999)
 		self.__balance = 10000
+		self.__transactionDetailsList =[]
 
 
 	def __getIfsc(self,branchName):
@@ -18,7 +19,7 @@ class Account:
 		return self.__accountNumber
 
 	def viewAccount(self):
-		print("\n\n\nYour Account Details: ")
+		print("\n\n\nYour Account Details :- ")
 		print(f"Account Number :- {self.__accountNumber}")
 		print(f"IFSC :- {self.__ifsc}")
 		print(f"Branch Name:- {self.__branchName}")
@@ -29,6 +30,14 @@ class Account:
 		print(f"Month :- {self._month}")
 		print(f"Year :- {self._year}")
 		print(f"Balance :- {self.__balance}")
+		for item in self.__transactionDetailsList:
+			if item < 0:
+				print(f"You have Debited :- {-item}")
+			elif item > 0:
+				print(f"You have Credited :- {item}")
+			else:
+				pass
+
 		exit = input("Press enter to exit :- ")
 
 	def getMyIfsc(self):
@@ -38,6 +47,7 @@ class Account:
 	def credit(self):
 		print("\n\n\nCredit ")
 		amount = int(input("Enter the amount to be credited :- "))
+		self.__transactionDetailsList.append(amount)
 		self.__balance += amount
 		print(f"Your balance is :- {self.__balance}")
 		exit = input("Press enter to exit :- ")
@@ -45,6 +55,7 @@ class Account:
 	def debit(self):
 		print("\n\n\nDebit ")
 		amount = int(input("Enter the amount to be debited :- "))
+		self.__transactionDetailsList.append(-amount)
 		self.__balance -= amount
 		print(f"Your balance is :- {self.__balance}")
 		exit = input("Press enter to exit :- ")

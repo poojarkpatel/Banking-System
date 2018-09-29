@@ -53,7 +53,7 @@ class Account:
 		if var == 'debit':
 			self.__balance -= amount
 		if var == 'credit':
-			self.__ifsc += amount
+			self.__balance += amount
 
 
 	def clearAccount(self):
@@ -67,7 +67,7 @@ class Account:
 		self.__ifsc = ''
 		self.__branchName =''
 		self.__balance = ''
-		
+
 
 	def deleteAccount(self,name,date,month,year,accountNo,ifscCode):
 		isvalid = True
@@ -81,9 +81,9 @@ class Account:
 			return False
 		if self.__accountNumber != accountNo:
 			return False
-		if self.ifscCode != ifscCode:
+		if self.__ifsc != ifscCode:
 			return False
-		if isvalid True:
+		if isvalid:
 			return True
 			self.clearAccount()
 

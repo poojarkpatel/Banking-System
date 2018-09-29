@@ -53,10 +53,10 @@ class BankingSystem:
 			self.receiverAccountNumber = int(input("Enter beneficiary's account Number :- "))
 			receiverBankAccount = self.__accountsDict[self.receiverAccountNumber]
 			self.receiverIfsc =  input("Enter sender's ifsc code :- ")
-			if senderBankAccount.getMyIfsc() == senderIfsc:
-				transaction(amount,'debit')
-			if receiverBankAccount.getMyIfsc() == receiverIfsc:
-				transaction(amount,'credit')
+			if senderBankAccount.getMyIfsc() == self.senderIfsc:
+				senderBankAccount.transaction(amount,'debit')
+			if receiverBankAccount.getMyIfsc() == self.receiverIfsc:
+				receiverBankAcccount.transaction(amount,'credit')
 			print("Transaction successfull")
 
 		elif choice is 6:

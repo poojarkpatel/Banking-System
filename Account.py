@@ -9,6 +9,7 @@ class Account:
 		self.__accountNumber = randint(10000000,99999999)
 		self.__balance = 10000
 		self.__transactionDetailsList =[]
+		self.deductAmount = 0
 
 
 	def __getIfsc(self,branchName):
@@ -47,16 +48,29 @@ class Account:
 	def credit(self):
 		print("\n\n\nCredit ")
 		amount = int(input("Enter the amount to be credited :- "))
+		if self.deductAmount == True:
+			self.__balance += self.__balance + amount - 500
+		else:
+			self.__balance += amount
 		self.__transactionDetailsList.append(amount)
-		self.__balance += amount
 		print(f"Your balance is :- {self.__balance}")
 		exit = input("Press enter to exit :- ")
 
 	def debit(self):
 		print("\n\n\nDebit ")
 		amount = int(input("Enter the amount to be debited :- "))
-		self.__transactionDetailsList.append(-amount)
-		self.__balance -= amount
+		if self.__balance - amount > 0:
+			if self.__balance -amount < 10000:
+				self.__balance = self.__balance - amount - 500
+			else:
+				self.__balance = self.__balance -amount
+			self.__transactionDetailsList.append(-amount)
+		if self.__balance - amount < 0:
+			print("sorry you cannot debit due to insufficient balance")
+		if self.__balance - amount == 0:
+			self.__balance = self.__balance - amount
+			self.__transactionDetailsList.append(-amount)
+			self.deductAmount = True
 		print(f"Your balance is :- {self.__balance}")
 		exit = input("Press enter to exit :- ")
 

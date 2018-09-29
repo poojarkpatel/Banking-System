@@ -46,32 +46,36 @@ class Account:
 
 
 	def credit(self):
-		print("\n\n\nCredit ")
 		amount = int(input("Enter the amount to be credited :- "))
 		if self.deductAmount == True:
 			self.__balance += self.__balance + amount - 500
+			self.__transactionDetailsList.append(amount)
+			self.deductAmount = False
 		else:
 			self.__balance += amount
-		self.__transactionDetailsList.append(amount)
+			self.__transactionDetailsList.append(amount)
 		print(f"Your balance is :- {self.__balance}")
 		exit = input("Press enter to exit :- ")
 
 	def debit(self):
-		print("\n\n\nDebit ")
 		amount = int(input("Enter the amount to be debited :- "))
 		if self.__balance - amount > 0:
 			if self.__balance -amount < 10000:
-				self.__balance = self.__balance - amount - 500
+				if(self.__balance - amount - 500) in range (0,500):
+					deduct = self.__balance - amount - 500
+
 			else:
 				self.__balance = self.__balance -amount
 			self.__transactionDetailsList.append(-amount)
-		if self.__balance - amount < 0:
+		elif self.__balance - amount < 0:
 			print("sorry you cannot debit due to insufficient balance")
-		if self.__balance - amount == 0:
+		elif self.__balance - amount == 0:
 			self.__balance = self.__balance - amount
 			self.__transactionDetailsList.append(-amount)
-			self.deductAmount = True
-		print(f"Your balance is :- {self.__balance}")
+			self.deductAmount = True	
+		else:
+			pass
+			print(f"Your balance is :- {self.__balance}")
 		exit = input("Press enter to exit :- ")
 
 	def transaction(self,amount,var):
